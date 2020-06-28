@@ -1,0 +1,29 @@
+<!--
+  @File Name          : header.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 6/15/2020, 6:10:43 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    6/15/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <div class="header slds-grid slds-grid_align-end">
+        <div class="slds-p-around_small slds-align-right">
+            <lightning-tile if:true={user} label={username} href="#" type="media">
+                <ul class="slds-list_horizontal">
+                    <li class="slds-item">{useremail}</li>
+                </ul>
+                <lightning-avatar
+                    slot="media"
+                    src={user.picture}
+                    fallback-icon-name="standard:none"
+                    alternative-text={username}
+                    class="slds-avatar--circle">
+                </lightning-avatar>
+            </lightning-tile>
+        </div>
+    </div>
+</template>

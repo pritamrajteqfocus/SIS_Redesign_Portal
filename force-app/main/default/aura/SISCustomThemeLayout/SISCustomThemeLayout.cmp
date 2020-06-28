@@ -1,0 +1,23 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="Full page for community - Custom Theme Layout">
+	<aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
+
+    
+    <!--Logo-->
+
+    <!--Navigation-->
+    <lightning:layout>
+        <lightning:layoutItem>
+           <c:SISCustomNavigation></c:SISCustomNavigation>
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto">
+            <lightning:layoutItem>
+                <div class="slds-border_bottom user_prof_bg">
+                    {!v.profileMenu}
+                </div>
+            </lightning:layoutItem>
+            {!v.body}
+        </lightning:layoutItem>
+    </lightning:layout>
+
+    <!--Page-->
+</aura:component>

@@ -1,0 +1,258 @@
+@media screen and (min-width: 1921px)
+{	
+     h2{font-size: 22px;}
+     h3{font-size: 22px;}
+     h4{font-size: 22px;}
+     h5{font-size: 22px;}
+     h6 {padding: 10px 0px;font-size: 20px;}
+    .navigation .subMenu a { font-size: 18px;}
+    .contactInfo .info .info_list li .value { font-size: 22px;}
+    .contactInfo .info .info_list li label { font-size: 22px;} 
+    .infoDesc { font-size: 22px;}
+    .genral_contactInfo .genralBox .halfForm li .value { font-size: 22px;}
+    .myi { font-size:24px;}
+    .fa-2x { font-size: 2em;}
+    .navigation > li > a{font-size:20px;}
+    .genral_contactInfo .genralBox .halfForm li .label { font-size: 20px;}
+    .rectangleButton{ width:310px; height:65px;}
+    .rectangleButton .buttonText { padding: 10px; font-size: 22px;}
+    .rectangleButton .leftIcon {float: left;   padding: 12px 15px 0px 12px;}
+    .smallButton {width:145px; height:55px;}
+    .smallButton .leftIcon { float: left;  padding: 8px 5px 0px 10px;}
+    .smallButton .buttonText { padding: 16px;  font-size: 22px;}
+    .uploadedFile {font-size: 22px;}
+    .genral_contactInfo .genralBox .halfForm li .inputBox .inputText {font-size: 22px;}
+    .radioButton {height: 2em;}
+    .insuranceYesNo span {font-size: 22px;}
+    .medTable .medRow .medHeaderCell {font-size: 22px;}
+    .genral_contactInfo .genralBox {font-size: 22px;}
+    .signOut {font-size: 22px;}
+    .btn {width: 260px; height: 55px;}  
+    .confirmDialogBox {width: 450px;}
+    .navigation .subMenu {height:450px;width: 301px;padding: 0 0 0 80px;}
+    .leftBar {width:220px;}
+    .container {display: block;width: 100%;background: #002a3a; padding: 0 0 0 220px;}     
+}
+
+@media screen and (min-width: 2561px)
+{   
+     h2{font-size: 24px;}
+     h3{font-size: 24px;}
+     h4{font-size: 28px;}
+     h5{font-size: 24px;}
+    .navigation .subMenu a { font-size: 20px;}
+    .contactInfo .info .info_list li label { font-size: 22px;}
+    .contactInfo .info .info_list li .value {  font-size: 24px;}
+    .genral_contactInfo .genralBox .halfForm li .value { font-size: 24px;}
+    .genral_contactInfo .genralBox .halfForm li .label { font-size: 24px;}
+    .myi { font-size:28px;}
+    .fa-2x { font-size: 2em;} 
+    .navigation > li > a { font-size: 20px;}
+    .genral_contactInfo .genralBox .halfForm li .inputBox .inputText {font-size: 24px;}    
+    .infoDesc { font-size: 24px;}
+    .smallButton { width: 180px; height: 60px;} 
+    .smallButton .buttonText {padding: 12px;font-size: 26px;} 
+    .insuranceYesNo span { font-size: 22px;}
+    .rectangleButton { width: 325px; height: 65px;}
+    .rectangleButton .leftIcon {float: left; padding: 10px 20px 0px 10px;}
+    .rectangleButton .buttonText { padding: 10px;font-size: 24px;}
+    .medTable .medRow .medHeaderCell {font-size: 26px;}
+    .genral_contactInfo .genralBox {font-size: 24px;}
+    .signOut {font-size: 22px;}
+    .confirmDialogBox {  width: 545px;}
+    .navigation .subMenu {height:600px;width: 345px;padding: 0 0 0 115px;}
+    .container {padding: 0 0 0 256px;}
+    .leftBar {width: 262px;}
+    
+}
+
+@media screen and (min-width: 3201px)
+{
+	 h4{font-size: 30px;}
+	 h2{font-size: 28px;}
+	 h3{font-size: 28px;}
+	 h5{font-size: 30px;}
+	 h6{font-size: 30px;}
+	.contactInfo .info .info_list li label { font-size: 28px;}
+        .contactInfo .info .info_list li .value {  font-size: 28px;}
+        .infoDesc {font-size: 30px;}
+        .genral_contactInfo .genralBox .halfForm li .value {font-size: 30px;}
+        .genral_contactInfo .genralBox .halfForm li .inputBox .inputText {font-size: 26px;}
+	.genral_contactInfo .genralBox .halfForm li .label {font-size: 28px;}
+        .fa-2x {font-size: 2.5em;}
+        .navigation .subMenu a {font-size: 25px;padding: 22px;}
+	.rectangleButton { width: 380px; height: 72px;margin-top: 24px;margin-bottom: 24px;}
+	.rectangleButton .buttonText { padding: 10px;  font-size: 28px;}
+	.smallButton { width: 220px;height: 65px;}
+	.smallButton .buttonText { padding: 14px;font-size: 28px;}
+	.genral_contactInfo .genralBox .halfForm li .label { font-size: 28px;}
+	.genral_contactInfo .genralBox .halfForm li .inputBox .inputText { font-size: 28px; height:60px;}
+	.uploadedFile {font-size:28px;}
+	.insuranceYesNo span {font-size: 28px;}
+	.radioButton {height: 3em;}
+	.confirmDialogBox {width: 658px;}
+	.btn { width: 360px;height: 60px;}
+	.navigation .subMenu {width: 380px;padding: 5px 0 0 140px;height:600px;}
+	.leftBar {  position: absolute;left: 1px; top: 0;height: 100%;width: 280px;}
+	.container {display: block;width: 100%; background: #002a3a;padding: 0 0 0 280px;}
+	.navigation > li > a {font-size: 25px;}
+	.signOut {font-size: 30px;}
+	.myi {position: relative;cursor: cursor; float: right;  margin-top: -86px;}
+	.innerContainer .inner_rightBar { display: block;width: 100%;padding: 0 0 0 15px;}  
+}
+
+@media screen and (min-width: 3841px)
+{
+	.navigation > li > a {  font-size: 34px;}
+	.navigation .subMenu a {font-size: 28px;padding: 25px;}
+	.contactInfo .info .info_list li .value { font-size: 34px;}
+	.contactInfo .info .info_list li label { font-size: 32px;}
+	.infoDesc {font-size: 34px;}
+	 h4 { font-size: 34px;}
+	 h2 { font-size: 34px;}
+	 h3 { font-size: 34px;}
+	 h5 { font-size: 34px;}
+	 h6 { font-size: 38px;}
+	.genral_contactInfo .genralBox .halfForm li .value { font-size: 36px;}
+	.signOut {font-size:30px;}
+	.genral_contactInfo .genralBox .halfForm li .inputBox .inputText {font-size: 34px;height: 65px;}
+	.smallButton {width: 240px;height: 70px;}
+	.smallButton .buttonText {  padding: 16px;font-size: 36px;}
+	.rectangleButton { width: 490px;height: 85px;margin-top: 34px;margin-bottom: 34px;}
+	.rectangleButton .buttonText {padding: 10px;font-size: 34px;}
+	.fa-2x { font-size: 2em;}
+	.smallButton {width: 312px;height: 90px;}
+	.smallButton .buttonText { padding: 20px;font-size: 44px;}
+	.genral_contactInfo .genralBox .halfForm li .label {font-size: 34px;}
+	.genral_contactInfo .genralBox .halfForm li .inputBox .inputText { font-size: 34px;height: 80px;}
+	.genral_contactInfo .genralBox .halfForm li .value {font-size: 34px;}
+	.uploadedFile {font-size:34px;}
+	.genral_contactInfo .genralBox { font-size: 34px;}
+	.navigation .subMenu {width: 586px;padding: 16px 0px 0 170px;height:620px;}
+	.myi { font-size:30px;margin-top: -80px;}
+	.container {padding: 0 0 0 315px;}
+	.leftBar {position: absolute; left: 0px;top: 0;height: 100%;width: 350px;}
+	.innerContainer .inner_rightBar {display: block;  width: 100%;  padding: 0 0 0 210px;}
+	.btn { width: 480px; height: 88px;}
+	.confirmDialogBox {width: 925px;height: 230px;}
+	.confirmDialogBox .label { color: #fff;font-size: 34px;font-weight: 600; display: block;padding: 20px 20px 10px 20px;}
+	.rectangleButton .leftIcon { float: left;padding: 18px 20px 0px 10px;}
+	.navigation .active .subMenu { display: block; margin-top: -35px;}
+}
+
+@media screen and (max-width: 1023px) 
+{
+	h2{font-size: 20px;padding: 0 0;}
+	
+	.innerContainer{ padding: 11px 0 0 0; }
+	.innerContainer .subMenu{ position: relative; top: 0; width: 100%; height: auto; padding-bottom: 25px; border-bottom: 1px solid #a8a8a8; margin-bottom: 25px; }
+	.innerContainer .subMenu li{ float: left; width: auto; margin: 5px;  }
+	.innerContainer .subMenu ul a{ font-size: 14px; padding: 8px; }
+
+	.leftBar{ position: relative; width: 100%; }
+	.container{ padding:120px 0 0 0; background: none; }
+	.innerContainer .inner_rightBar .profile .userImg{ width: 200px;}
+	.innerContainer .inner_rightBar .profile .userImg img{max-width: 100%; max-height: 100%; width: auto; height: auto;}
+	.genral_contactInfo .genralBox .halfForm{ padding: 0; width: 100%; }
+
+	.innerContainer .inner_rightBar{padding:0 0 0 0};
+
+	.headerPart .responsiveMenu{display:block;}
+	.headerPart {background: #002a3a;position: fixed;left: 0;display: block;top: 0;width: 100%;z-index: 9999;height: 95px;}
+	.line{display:none;}
+	.signOutLine{display:block;margin-top: 10px;}
+
+	.navigationContainer{height:100%;width:0px;top:95px;padding:0;position:fixed;z-index:1;left:0;background-color:#002a3a;overflow-x:hidden;transition:0.5s}
+	.navigationContainer .navigation { padding: 0;}
+	.navigationContainer .navigation li.active a{color:#fff;background:#002a3a;}
+	.navigationContainer .navigation li.active .chevronUp{display:none;}
+	.navigationContainer .navigation li.active .chevronDown{display:block;}
+	.navigationContainer .navigation li .chevronUp{display:block;}
+	.navigationContainer .navigation li .chevronDown{display:none;}
+	.navigationContainer .navigation > li > a{ width: 100%; font-size: 14px; text-align: left;padding: 10px 8px;}
+	.navigation > li > a:hover{border:0px;padding:0px 18px 0px 0px;}
+	.navigation > li.active > a:hover {padding:10px 8px;}
+	.navigationContainer .navigation .subMenu { left: 0; top: 0px; padding:0;height: auto !important; background: #fff; right: 0; width: 100%; position: relative; margin-top: 10px; }
+	.navigationContainer .navigation .subMenu li{padding:0;border-radius:0;}
+	.navigationContainer .navigation .subMenu li a{background: #fff;color: #002a3a;}
+	.navigationContainer .navigation .subMenu li.active a {background: #af272f;color: #fff;}
+	.navigationContainer .navigation .subMenu a {font-size:12px;text-transform: capitalize;}
+	.navigationContainer .navigation > li > a br { display: none; }
+	.navigationContainer .navigation > li > a i { margin: 0 10px 0 0; }
+	.navigationContainer .navigation .subMenu .myi{display:block;}
+	.navigationContainer .navigation .subMenu .subMenuArrowIcon{display:none;}
+	.navigationContainer .navigation .subMenu li.active .subMenuArrowIcon{display:none;}
+
+	.confirmDialogBox{width:90%;margin: 50% auto;}
+
+	.genral_contactInfo .genralBox .halfForm li .label{ font-size: 14px; }
+	.genral_contactInfo .genralBox .halfForm li .value{ font-size: 14px; }
+
+	.innerContainer .inner_rightBar .profile .userImg{ width: 200px;}
+
+	.signOut{margin: 10px 0;padding:10px 0;}
+}
+
+@media screen and (max-width: 639px) 
+{
+	h2{font-size: 15px;padding: 0 0; overflow-y: overlay;}
+	
+	.innerContainer .inner_rightBar .contactInfo{display:inline-block;padding-top:8px;}
+	.rightBar{ width: 100%; display: block; padding: 25px 40px; background: #fff;}
+
+	.confirmDialogBox{width:90%;margin: 50% auto;}
+
+	.innerContainer .inner_rightBar{padding:0 0 0 0};
+             
+}
+@media (max-width:426px) and (min-width:320px)
+{
+	html, body {
+    overflow-y: scroll; overflow-x:hidden;
+    }
+	.smallButtonContainer{padding:0 0px 0 40px;}
+	.headerPart {background: #002a3a;position: fixed;left: 0;display: block;top: 0;width: 100%;z-index: 9999;height: 95px;}
+	
+}
+
+@media screen and (max-width:320px) 
+{
+	html, body {
+    overflow-y: scroll; overflow-x:hidden;
+    }
+	.smallButtonContainer{padding:0 0px 0 00px;}
+	.headerPart {background: #002a3a;position: fixed;left: 0;display: block;top: 0;width: 100%;z-index: 9999;height: 95px;}
+	
+}
+/*edit by himanshu */
+
+@media screen and (max-width:620px) 
+{
+	.userImg {
+	width: 100% !important;
+    max-width: 200px !important;
+    display: block !important;
+    margin: auto !important;
+    float: none !important;
+	}
+	/*.buttonText{    margin-top: 30%;}*/
+	.btn{width:200px !important;}
+	.rectangleButton {width:100% !important; margin-left: 0%;}
+	.smallButton{ margin-top:1% !important; margin-left: 35px;}
+	.smallButton.btnTick {margin-top: 15% !important;
+}
+	/*.smallButtonContainer{padding-left:20% !important;}*/
+	/*.buttonText{font-size:12px;}*/
+	
+	/*.smallButton{ margin:0px !important;margin-top:0px !important; margin-left:9% !important;}
+	.confirmDialogBox{height:35% !important;}
+	.borderSmallButton{margin:0px !important;}*/
+}
+}
+@media screen and (min-width: 1361px)
+{.smallButton .buttonText{padding-top: 15px !important; padding-bottom:0px !important;padding-left:0px !important;padding-right:0px !important}
+.smallButton{margin-top:5% !important;}
+.rectangleButton {width:70% !important;}
+
+}
+

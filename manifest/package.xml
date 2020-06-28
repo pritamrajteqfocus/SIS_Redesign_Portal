@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>SIS_MyProfileController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+     <members>DIY_CustomThemeLayout</members>
+        <members>SIS_CustomNavigationTheme</members>
+        <members>SISCustomNavigation</members>
+        <members>SISCustomThemeLayout</members>
+        <members>SISDemo</members>
+        <members>SISDemoWrapper</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>StaticResource</name>
+    </types>
+    <version>48.0</version>
+</Package>

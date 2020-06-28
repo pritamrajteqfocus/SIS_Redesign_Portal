@@ -1,0 +1,28 @@
+.logo{ display: block; text-align: center; width: 100%; padding: 15px; }
+.line{display: block;width:50%;margin-left:25%;height:3px;background:#fff}
+.activeMobileMenu{background:#d8d8d8;color:#002a3a;padding:0 4px;border-radius:2px;border:2px solid #d8d8d8;}
+
+.responsiveMenu{ display: none; color:#fff; float:left; padding: 34px 0 0 20px;}
+.navigation{ padding: 25px 0; }
+.navigation > li{ position:relative;}
+.navigation > li > a{ position: relative; display: block; font-size: 16px;  font-weight: bold;text-align: center;text-transform: uppercase; padding: 20px 0; color: #fff; }
+.navigation > li > a:hover{border-width:0px 0px 0px 5px;padding: 10px 20px 20px 5px;border-style:solid;border-color:#fff;margin: 10px 0px 0px 10px;}
+.navigation > li.active > a{ background: #fff; color: #af272f; }
+.navigation > li.active > a:hover{padding:20px 0;margin:0 0;}
+
+.navigation .subMenu { display: none;position:absolute;left: 180px;top:0px; width: 260px; overflow: auto; padding: 0 0 0 40px; }
+.navigation .active .subMenu { display: block;margin-top:-50px;  }
+.navigation .subMenu li { padding: 5px 0 5px 0; border-radius: 8px; color: #686868;}
+.navigation .subMenu a { display: block; width: 100%; padding: 15px; color: #686868;font-size: 14px; font-weight: bold; text-transform: uppercase; }
+.navigation .subMenu li:hover, .navigation .subMenu li:hover a{ background: #fff; color: #af272f; }
+.navigation .subMenu li.active, .navigation .subMenu li.active a{background: #af272f;color: #fff; }
+.navigation .subMenu li div i{padding: 5%;}
+
+.chevron{float:right;margin-top: 10px !important;}
+.chevronUp{display:none;}
+.chevronDown{display:none;}
+
+.subMenuArrowIcon{display:none;float:right;color:#af272f;margin-top:-17%}
+
+.signOut{ position: relative; margin: 20px 0; display: block; text-align: center;font-size: 18px;text-transform: uppercase; padding: 20px 0; color: #fff; }
+.signOut:hover,.signOut.active{ background: #fff; color: #af272f; }

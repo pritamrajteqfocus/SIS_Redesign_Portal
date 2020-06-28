@@ -1,0 +1,110 @@
+<!--
+  @File Name          : recordDetails.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 6/10/2020, 11:26:41 AM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    6/5/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <div class="slds-grid slds-gutters slds-wrap">
+        <div class="slds-col  slds-large-size_1-of-1">
+            <div class="">
+                <header class="headingStyle slds-p-vertical_small slds-text-body--small slds-p-left_large">
+                    {title}
+                    <template if:true={iseditblock}>
+                        <span style="float:right" class="slds-text-link_reset">
+                            <lightning-icon icon-name="utility:edit" class="slds-p-right_medium" alternative-text="Edit"
+                                size="x-small" title="Edit" onclick={handleEditIcon}>
+                            </lightning-icon>
+                        </span>
+                    </template>
+                </header>
+                <div class="slds-box">
+
+                    <div class="div-body slds-grid slds-wrap">
+                        <template if:true={isprofilewithpic}>
+                            <div class="slds-col slds-size_3-of-3 slds-large-size_1-of-3 ">
+                                <!-- <img src={propic}/> -->
+                                <img class="proImg"
+                                    src="https://cdn1.iconfinder.com/data/icons/avatar-97/32/avatar-02-512.png" />
+                            </div>
+                        </template>
+
+                        <div class={classname}>
+                            <template if:false={editmodelopen}>
+                                <lightning-record-view-form record-id={contactId} object-api-name="Contact">
+
+                                    <template for:each={fields} for:item="fld">
+                                        <div class="slds-grid slds-m-bottom_small" key={fld.apiname}>
+                                            <label
+                                                class="slds-form-element__label InfoHeading slds-p-top_none slds-text-body--small slds-col slds-size_1-of-2  "
+                                                for="text-input-id-1"><b> {fld.label}</b>
+                                            </label>
+                                            <p
+                                                class="spanStyle slds-m-left_medium InfoHeading slds-p-horizontal_none slds-col slds-size_1-of-2  slds-text-body--small ">
+                                                <lightning-output-field label="Last Name" class="slds-size_1-of-2"
+                                                    variant="label-hidden" key={fld.apiname} field-name={fld.apiname}>
+                                                </lightning-output-field>
+                                            </p>
+                                        </div>
+                                    </template>
+                                </lightning-record-view-form>
+                            </template>
+                            <div if:true={editmodelopen} class="slds-is-relative">
+                                <lightning-record-edit-form record-id={contactId} object-api-name="Contact"
+                                    onsubmit={handleSubmit} column="2" onload={handleOnLoad} onsuccess={handleSuccess}>
+                                    <template for:each={fields} for:item="fld">
+                                        <template if:false={fld.iscombofield}>
+                                            <div key={fld.apiname} class="slds-p-bottom_x-small">
+                                                <label for={fld.apiname} key={fld.apiname}
+                                                    class="InfoHeading">{fld.label}</label>
+                                                <lightning-input-field class="slds-p-bottom_x-small" key={fld.apiname}
+                                                    field-name={fld.apiname} variant="label-hidden">
+                                                </lightning-input-field>
+                                            </div>
+                                        </template>
+                                        <template if:true={fld.iscombofield}>
+                                            <label for={fld.apiname} key={fld.apiname} class="InfoHeading">PHONE
+                                                NUMBER:</label>
+                                            <div class="slds-grid slds-p-bottom_x-small" key={fld.apiname}>
+
+                                                <lightning-input type="text" onchange={handleChangeCountryCode}
+                                                    value={code} variant="label-hidden"
+                                                    class="slds-size_1-of-3 slds-p-right_x-small"
+                                                    placeholder="Country Code"></lightning-input>
+                                                <lightning-input type="text" onchange={handleChangePhone}
+                                                    value={phonenum} class="slds-size_2-of-3" variant="label-hidden"
+                                                    placeholder="Phone Number"></lightning-input>
+                                            </div>
+                                        </template>
+                                    </template>
+                                    <div class="slds-align_absolute-center">
+
+                                        <lightning-button variant="base" label="Cancel" title="Cancel"
+                                            onclick={cancelChanges} class="slds-m-left_x-small"></lightning-button>
+                                        <lightning-button variant="brand" label="Save" title="Save" type="submit"
+                                            class="slds-m-left_x-small"></lightning-button>
+                                    </div>
+                                </lightning-record-edit-form>
+                                <div if:true={isSpinnerOpen}>
+                                    <lightning-spinner alternative-text="Loading..." variant="brand">
+                                    </lightning-spinner>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <template if:true={isprofilewithpic}>
+                        <p class="slds-p-horizontal_small slds-text-body--small slds-m-top_small">Please email <span
+                                class="InfoHeading">{contactregistaremail}</span> to make any changes to the above
+                            information.</p>
+                    </template>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

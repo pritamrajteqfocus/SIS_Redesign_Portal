@@ -1,0 +1,98 @@
+label {font-size: 14px;}
+        .contactInfo .info .info_list .Term label{color:black;}
+        .contactInfo .info .info_list .Term .value{color:black;}
+        .sttement{width:735px;height: 17px;font-size: 12px;color:#000000;text-decoration:none solid rgb(0, 0, 0);}
+        input[type=radio]{border: 2px solid #002a3a;}
+        .mauritiusList li{list-style-type: disc;color:black;margin-left:15px;}
+        .termButton1{width:110px;height:40px;border-radius:100px;color: #fff;cursor: pointer;float:right;}
+        .termButton1 .buttonText{padding: 10px;font-size:14px;text-align:center;font-weight:bold;}
+        .termButton{width:110px;height:40px;border-radius:100px;color: #fff;cursor: pointer;float:right;margin-top:-40px;}
+        .termButton .buttonText{padding: 10px;font-size:14px;text-align:center;font-weight:bold;}
+        .radioStyle td{padding:12px;}
+        .radioFormStyle1 tr{display:inline;}
+        .radioFormStyle2 tr{display:inline;}
+        .Flightstatus{display:inline-block;}
+        .spinningIcn{display:none;}
+        @media all and (max-width: 590px) and (min-width: 380px){
+        .Flightstatus {
+        display:block;
+        } 
+        
+        }
+        @media all and (max-width: 550px){
+        .Flightstatus {
+        display:block;
+        } 
+        .arivalBtn{margin-top:8px;float:none;margin-left:auto}
+        .courseSel{margin-top:8px;float:none;}
+        .trmRegistration{position:relative;top:40px;right:52%;}
+        .residentialMobile{position:relative;top:-5px;}
+        }
+        @media all and (max-width: 470px){
+        .trmRegistration{position:relative;top:4px;right:0%}
+        .residentialMobile{position:relative;top:-15px;}
+        }
+        @media all and (max-width: 330px){
+        .trmRegistration{position:relative;top:4px;right:0%}
+        .residentialMobile{position:relative;top:-20px;left:7px;}
+        }
+        @media all and (max-width: 1450px) and (min-width:580px){
+        .trmRegistration{margin-top:-5px;}
+        
+        } 
+        @media all and (max-width: 1450px) and (min-width:580px){
+        .contactInfo .info .info_list li .value {
+        font-size: 14px;
+        font-weight: normal;
+        color: #686868;
+        margin: 0 0px 0 0;
+        }
+        }
+        .courseName {
+        margin-left: 40px;
+        color: black;
+        }
+        .ElectiveName{
+        margin-left: 40px;
+        color: black;
+        }
+        .courseName::before {
+        content: '\2022';
+        }
+        .ElectiveName::before {
+        content: '\2022';
+        }
+        .courses {
+        line-height: 10px;
+        }
+        .Electives {
+        line-height: 10px;
+        }
+        .Course.Selection{
+        border:2px solid #5088A9;
+        padding:15px;
+        margin-top: 5px;
+        height:100%;
+        }
+        .Meal.Selection{     
+        padding:15px;
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        color: #000000;
+        margin-top: 5px;
+        border: 2px solid #5088a9;    
+        display: block;
+        }
+        .Mealpreference{
+        padding:10px;
+        height:100%;
+        }
+        .No{margin-top: 20px;}
+        .Points{margin-top:5px;line-height:15px;}
+        .Points p::before {
+        content: '\2022';
+        }
+        .contactInfo .info .info_list li label {
+        font-weight:lighter !important;
+        }

@@ -1,0 +1,48 @@
+<!--
+  @File Name          : app.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 6/15/2020, 6:47:44 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    6/15/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <lightning-layout class="app">
+        <lightning-layout-item >
+            <c-sidebar
+                title={title}
+                menu={topMenu}
+                submenu={subMenu}
+                controlmenu={controlMenu}
+                path={currentpage}
+                subpath={currentsubpage}
+                user={loggedInUser}
+                isloggedin={isLoggedIn}
+                onmenuselect={handleMenuSelect}
+                onsubmenuselect={handleSubMenuSelect}
+                onnavigatehome={handleNavigateHome}>
+            </c-sidebar>
+        </lightning-layout-item>
+        <lightning-layout-item flexibility="auto">
+            <lightning-layout-item>
+                <div class="slds-border_bottom" if:true={isLoggedIn}>
+                    <c-header user={loggedInUser} 
+                    username={contactName}
+                    useremail={userEmail}></c-header>
+                </div>
+                <c-main page={currentpage} 
+                    subpage={currentsubpage}
+                    contactid={contactId}
+                    campusname={contactCampus}
+                    countrycode={countrycode}
+                    phonenum={phonenum}>
+                </c-main>
+                
+            </lightning-layout-item>
+        </lightning-layout-item>
+    </lightning-layout>
+    
+</template>

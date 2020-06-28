@@ -1,0 +1,96 @@
+*,*:before,*:after{ margin: 0; padding: 0; box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+body{font-family: 'Open Sans', sans-serif; font-size: 14px;}
+a{text-decoration: none;}
+ul li{ list-style: none; }
+.clearfix:after{ clear: both; content: ""; display: table; float: none; }
+
+h2 { color: #686868; border-bottom: 2px solid #af272f; padding: 10px 0; font-size: 16px; font-weight: bold; }
+h3 { color: #686868; padding:0 0 10px 0; font-size: 14px; font-weight: 600; }
+h4 { color: #686868; padding: 5px 0; font-size: 14px; font-weight: 300; }
+h5 { color: #686868; padding: 5px 0; font-size: 14px; font-weight: 300;}
+h6 { color: #a8a8a8; padding: 5px 0; font-size: 14px; font-weight: 300; }
+
+.container{ display: block; width: 100%; background: #002a3a; padding: 0 0 0 180px; }
+
+.leftBar{ position: absolute; left: 0; top: 0; height: 100%; width: 180px; }
+.rightBar{ width: 100%; display: block; padding: 25px 40px; background: #fff; min-height:820px;}
+
+.innerContainer { width: 100%; display: block; padding: 0 0 0 255px; }
+.innerContainer .inner_rightBar{ display:block; width: 100%;}
+.innerContainer .inner_rightBar .profile { display: block; width: 100%; }
+.innerContainer .inner_rightBar .profile .userImg{ float:left;width: 206px; overflow: hidden; margin-right: 25px;border: solid 2px #979797; }
+.innerContainer .inner_rightBar .profile .userImg .picEdit{color:#686868;position:absolute;margin-left:165px;padding:5px 5px;cursor:pointer;}
+.innerContainer .inner_rightBar .profile .userImg img{width:100%;}
+
+.innerContainer .inner_rightBar .contactInfo{ overflow:hidden; }
+.innerContainer .inner_rightBar .contactInfo .info{ background: #d2d0ce; padding: 15px; }
+
+.contactInfo .info .info_list li{ display: block; width: 100%; margin: 0 0 10px 0; }
+.contactInfo .info .info_list li label{ font-size: 14px; font-weight: 600; color: #686868; margin:0 15px 0 0; width: 200px; display: inline-block; }
+.contactInfo .info .info_list li .value{ font-size: 14px; font-weight: normal; color: #686868; margin:0 15px 0 0; }
+
+.genral_contactInfo{ width: 100%; display: block; margin:25px 0 0 0; }
+.genral_contactInfo .genralBox{ margin:15px 0 0 0; padding: 15px; background: #d2d0ce; }
+.genral_contactInfo .genralBox .halfForm{ width: 50%; float: left; padding: 0 15px; }
+.genral_contactInfo .genralBox .halfForm .form_box{ margin:15px 0 0 0; }
+.genral_contactInfo .genralBox .halfForm li{ width: 100%; display: block; margin-bottom: 15px; }
+.genral_contactInfo .genralBox .halfForm li .label{ font-size: 14px;  color: #6d6e6e; margin: 0 0 8px 0; display: block; }
+.genral_contactInfo .genralBox .halfForm li .value{ font-size: 14px;  font-weight: normal; color: #6d6e6e; margin: 0 0 8px 0; display: block; }
+.genral_contactInfo .genralBox .halfForm li .inputBox{ display: block; width: 100%;  }
+.genral_contactInfo .genralBox .halfForm li .inputBox .inputText{ height: 45px; padding: 13px 15px; font-size: 14px; border:1px solid #a8a8a8; width: 100%;  color: #686868;}
+
+.infoDesc{font-size: 14px; color: #686868;}
+
+.formIcons{float:right; color:#686868; cursor:pointer; padding: 0 5px 0 5px;}
+.formIcons a{text-decoration:none;}
+.whiteIcons{color:#fff;font-size: 30px; padding: 0 10px 0 10px;}
+
+
+#AccountEditMode{display:none;}
+#AccountEditMode1{display:none;}
+.confirmDialogBox{ width: 396px; margin: 15% auto; height: 178px;  border-radius: 1px;  background-color: #686868; text-align:center;}
+.confirmDialogBox .label{color:#fff;font-size: 16px;  font-weight: 600; display: block; padding: 20px 20px 10px 20px;}
+.modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4);}
+
+.myi{position:relative;cursor:cursor;float: right;margin-top: -50px;}
+
+#loading{width:100%;height:100%;top:0;left:0;position:fixed;opacity:0.7;background-color:#fff;z-index:99;text-align:center}
+#loading-image{position:absolute;top:50%;left:50%;z-index:100}
+
+.rectangleButton{margin-top: 10px;margin-bottom: 10px;width:300px;height:45px;border-radius:100px;color: #fff;background-color:#686868;cursor: pointer;}
+.rectangleButton .leftIcon{float:left;padding:10px 20px 0px 10px}
+.rectangleButton .buttonText{padding: 14px;}
+
+.smallButtonContainer{display:inline-flex;padding:0 0 0 35%;}
+.smallButton{margin:24px 10px 0 0;width:98px;height:40px;border-radius:100px;color: #fff;background-color:#686868;cursor: pointer;}
+.smallButton .leftIcon{float:left;padding:6px 5px 0px 10px}
+.smallButton .buttonText{padding: 10px;}
+.borderSmallButton{border: 2px solid #fff;margin: 10px 10px 0 15%;float: left}
+.emailTranscriptButton{width:150px;}
+.emailTranscriptInput{width:200px;}
+.viewTranscriptButton{margin-left: 30px;padding: 12px;}
+
+.phonePlusSign{position:absolute;margin-top:14px;margin-left:5px}
+.inputCountryCode{width:70px;}
+
+.uploadedFile{padding:10px 10px;border:1px solid #686868;border-radius:0px;color:#686868}
+.uploadedFile a{margin:5px 0 0 5px}
+
+/*Medical Info Component*/
+.btn{width:240px;height:35px;border-radius:100px;background-color:#686868;display:inline-flex;padding:2px 0 0 7px;}
+.radioButton{height:1.5em;width:20px;}
+.insuranceYesNo{float:left;margin-left:20%;display:inline-flex;}
+.insuranceYesNo span{margin-left:5px;color:#686868;}
+.medTable{display:table;width:80%;}
+.medTable .medRow{display:table-row;}
+.medTable .medRow .medHeaderCell{width:50%;display:table-cell;padding:10px 0 10px 20px;font-weight:bold;color:#686868;}
+.medTable .medRow .medCell{width:50%;display:table-cell;padding: 0 20px 20px 20px;color:#686868;}
+.medTable .medRow .medCell a{border:1px solid #686868;padding: 5px 5px;border-radius:3px;}
+.medTable .medRow .medCell a:hover{border:1px solid #3277ce;}
+.medTable .medRow .medCell input{ width: 100%; height: 20px;}
+.medicalEntryType{margin-left:5%;display:inline-flex;}
+.medicalEntryType span{color:#686868;margin-left:5px;}
+
+.fieldMessage { display: none; font-size: 12px; padding: 2px; color: #af272f; float: right; }
+.btn-clicked{border: 3px solid #686868;background-color: #d2d0ce;color: #686868;width: 105px;}

@@ -1,0 +1,201 @@
+<!--
+  @File Name          : sidebar.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 6/5/2020, 1:25:34 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    6/5/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <lightning-layout class="sidebar">
+        <!-- Top most drawer, always rendered-->
+        <lightning-layout-item class="topdrawer slds-panel slds-panel_docked slds-panel_docked-left slds-is-open">
+             <!-- Absolute button to open subdrawer -->
+            <div if:false={openDrawer} class="drawer_expando_button slds-is-absolute slds-m-around_small">
+                <lightning-button-icon
+                    if:true={submenu}
+                    class="slds-current-color"
+                    icon-name="utility:chevronright"
+                    variant="brand"
+                    onclick={toggleDrawerState}
+                    alternative-text="Expand submenu"
+                    title="Expand the submenu">
+                </lightning-button-icon>
+            </div>
+            <!-- Top drawer items -->
+            <div class="slds-grid slds-wrap slds-grid_vertical slds-size_1-of-1" style="height:100%;">
+                <!-- Logo directing home -->
+                <div class="slds-col slds-size_1-of-1 slds-p-left_xx-large">
+                    <a href="javascript:void(0);" onclick={notifyNavigateHome}>
+                        <img style="width:140px;" alt="ALU Logo" title={title}
+                            src={logo}
+                            class="slds-m-vertical_x-large"/> 
+                    </a>
+                </div>
+                <!-- Container for top menu -->
+                <div class="slds-col slds-size_1-of-1">
+                    <!-- Vertical menu while drawer is open -->
+                    <lightning-vertical-navigation
+                        if:true={openDrawer}
+                        onselect={notifyMenuSelect}
+                        selected-item={path}
+                        class="slds-theme--inverse">
+                        <template iterator:top={menu}>
+                            <lightning-vertical-navigation-item-icon class="slds-current-color link_item"
+                                key={top.value.label}
+                                label={top.value.label}
+                                name={top.value.location}
+                                icon-name={top.value.icon}>
+                            </lightning-vertical-navigation-item-icon>
+                        </template>
+                    </lightning-vertical-navigation>
+                    <!-- Vertical menu while drawer is closed -->
+                    <div if:false={openDrawer} class="slds-col slds-size_1-of-1">
+                        <!-- Variant A -->
+                        <div if:false={drawerVariant}>
+                            <!-- Top menu vertical -->
+                            <lightning-vertical-navigation if:true={submenu} onselect={notifyMenuSelect} selected-item={path}>
+                                <template iterator:top={menu}>
+                                    <lightning-vertical-navigation-item-icon class="slds-current-color slds-theme--inverse link_item"
+                                        key={top.value.label}
+                                        label={top.value.label}
+                                        name={top.value.location}
+                                        icon-name={top.value.icon}>
+                                    </lightning-vertical-navigation-item-icon>
+                                    <!-- Submenu -->
+                                    <lightning-vertical-navigation
+                                        key={top.value.label}
+                                        if:true={top.value.visible}
+                                        onselect={notifySubMenuSelect}
+                                        selected-item={subpath}
+                                        compact>
+                                        <template iterator:sub={submenu}>
+                                            <lightning-vertical-navigation-item class="link_item slds-p-left_x-large link_item slds-theme--inverse"
+                                                key={sub.value.label}
+                                                label={sub.value.label}
+                                                name={sub.value.location}>
+                                            </lightning-vertical-navigation-item>
+                                        </template>
+                                    </lightning-vertical-navigation>
+                                </template>
+                            </lightning-vertical-navigation>
+                        </div>
+                        <!-- Variant B -->
+                        <div if:true={drawerVariant}>
+                            <!-- Top menu horizontal -->
+                            <lightning-layout if:true={submenu}
+                                horizontal-align="spread"
+                                class="slds-p-around_x-small"
+                                style="background: rgba(0,0,0,0.2)">
+                                <template iterator:top={menu}>
+                                    <lightning-button-icon
+                                        if:false={top.value.visible}
+                                        key={top.value.label}
+                                        variant="bare-inverse"
+                                        class="slds-m-around_xx-small"
+                                        size="medium"
+                                        alternative-text={top.value.label}
+                                        icon-name={top.value.icon}
+                                        data-name={top.value.location}
+                                        onclick={notifyMenuClickSelect}>
+                                    </lightning-button-icon>
+                                    <lightning-button-icon
+                                        if:true={top.value.visible}
+                                        key={top.value.label}
+                                        variant="border-filled"
+                                        size="medium"
+                                        alternative-text={top.value.label}
+                                        icon-name={top.value.icon}
+                                        data-name={top.value.location}
+                                        onclick={notifyMenuClickSelect}>
+                                    </lightning-button-icon>
+                                </template>
+                            </lightning-layout>
+                            <!-- Submenu drawer -->
+                            <template iterator:top={menu} if:true={submenu}>
+                                <div key={top.value.label} if:true={top.value.visible}>
+                                    <lightning-vertical-navigation if:true={submenu}
+                                        onselect={notifySubMenuSelect}
+                                        selected-item={subpath}
+                                        class="slds-theme--inverse">
+                                        <div class="slds-m-left_x-large slds-m-vertical_medium">
+                                            <h2 class="slds-text-heading_medium"><b>{top.value.label}</b></h2>
+                                        </div>
+                                        <template iterator:sub={submenu}>
+                                            <lightning-vertical-navigation-item
+                                                key={sub.value.label}
+                                                label={sub.value.label}
+                                                name={sub.value.location}>
+                                            </lightning-vertical-navigation-item>
+                                        </template>
+                                    </lightning-vertical-navigation>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+                <!-- Toggle for menu variants -->
+                <div class="slds-col slds-is-relative slds-size_1-of-1 slds-col_bump-top">
+                    <div if:false={openDrawer} 
+                        style="background: #ddd; text-align: center" class="slds-m-around_x-large slds-p-left_x-large">
+                        <lightning-input type="toggle" if:true={submenu}
+                            label="Style"
+                            checked={drawerVariant}
+                            message-toggle-inactive="Variant A"
+                            message-toggle-active="Variant B"
+                            onchange={toggleDrawerVariant}>
+                        </lightning-input>
+                    </div>
+                </div>
+                <!-- Container for permanent control menu -->
+                <div class="slds-col slds-size_1-of-1 slds-m-bottom_large slds-theme--inverse">
+                    <lightning-vertical-navigation if:true={controlmenu} onselect={notifyMenuSelect} selected-item={path}>
+                        <lightning-vertical-navigation-section>
+                            <template iterator:that={controlmenu}>
+                                <lightning-vertical-navigation-item-icon class="slds-current-color"
+                                    key={that.value.label}
+                                    label={that.value.label}
+                                    name={that.value.location}
+                                    icon-name={that.value.icon}>
+                                </lightning-vertical-navigation-item-icon>
+                            </template>
+                        </lightning-vertical-navigation-section>
+                    </lightning-vertical-navigation>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <!-- Sub drawer for submenu, sometimes hidden -->
+        <lightning-layout-item if:true={openDrawer} class="subdrawer slds-panel slds-panel_docked slds-panel_docked-left slds-is-open">
+            <!-- Absolute button to close subdrawer -->
+            <div class="drawer_expando_button slds-is-absolute slds-m-around_small">
+                <lightning-button-icon class="slds-current-color"
+                    icon-name="utility:chevronleft"
+                    onclick={toggleDrawerState}
+                    alternative-text="Expand submenu"
+                    title="Expand the submenu">
+                </lightning-button-icon>
+            </div>
+            <!-- Site title -->
+            <div class="slds-col slds-size_1-of-1 slds-grid slds-m-around_x-large">
+                <h1 class="slds-text-heading_medium"><b>{title}</b></h1>
+            </div>
+            <!-- Current submenu items -->
+            <div class="slds-col slds-col_bump-top">
+                <lightning-vertical-navigation if:true={submenu} onselect={notifySubMenuSelect} selected-item={subpath}>
+                    <lightning-vertical-navigation-section>
+                        <template iterator:sub={submenu}>
+                            <lightning-vertical-navigation-item
+                                key={sub.value.label}
+                                label={sub.value.label}
+                                name={sub.value.location}>
+                            </lightning-vertical-navigation-item>
+                        </template>
+                    </lightning-vertical-navigation-section>
+                </lightning-vertical-navigation>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

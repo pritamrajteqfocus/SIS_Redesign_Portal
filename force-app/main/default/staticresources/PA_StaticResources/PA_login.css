@@ -1,0 +1,176 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/K88pR3goAWT7BTt32Z01mxJtnKITppOI_IvcXXDNrsc.woff2?orgId=00D0Y000000ZANY&orgId=00D7E0000004aTa&orgId=00D0Y000000ZANY) format('woff2');
+  unicode-range: u+0460-052f, u+20b4, u+2de0-2dff, u+a640-a69f;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/RjgO7rYTmqiVp7vzi-Q5URJtnKITppOI_IvcXXDNrsc.woff2?orgId=00D0Y000000ZANY&orgId=00D7E0000004aTa&orgId=00D0Y000000ZANY) format('woff2');
+  unicode-range: u+0400-045f, u+0490-0491, u+04b0-04b1, u+2116;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/LWCjsQkB6EMdfHrEVqA1KRJtnKITppOI_IvcXXDNrsc.woff2?orgId=00D0Y000000ZANY&orgId=00D7E0000004aTa&orgId=00D0Y000000ZANY) format('woff2');
+  unicode-range: u+1f00-1fff;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/xozscpT2726on7jbcb_pAhJtnKITppOI_IvcXXDNrsc.woff2?orgId=00D0Y000000ZANY&orgId=00D7E0000004aTa&orgId=00D0Y000000ZANY) format('woff2');
+  unicode-range: u+0370-03ff;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/59ZRklaO5bWGqF5A9baEERJtnKITppOI_IvcXXDNrsc.woff2?orgId=00D0Y000000ZANY&orgId=00D7E0000004aTa&orgId=00D0Y000000ZANY) format('woff2');
+  unicode-range: u+0102-0103, u+1ea0-1ef9, u+20ab;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/u-WUoqrET9fUeobQW7jkRRJtnKITppOI_IvcXXDNrsc.woff2?orgId=00D0Y000000ZANY&orgId=00D7E0000004aTa&orgId=00D0Y000000ZANY) format('woff2');
+  unicode-range: u+0100-024f, u+1e00-1eff, u+20a0-20ab, u+20ad-20cf, u+2c60-2c7f, u+a720-a7ff;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2?orgId=00D0Y000000ZANY&orgId=00D7E0000004aTa&orgId=00D0Y000000ZANY) format('woff2');
+  unicode-range: u+0000-00ff, u+0131, u+0152-0153, u+02c6, u+02da, u+02dc, u+2000-206f, u+2074, u+20ac, u+2212, u+2215;
+}
+
+.container {
+  width: 400px;
+  text-align: center;
+  margin: 50px auto;
+}
+
+.container .loginContainer .aluLogo {
+  width: 128px;
+}
+
+.container .loginContainer .studentPortalImage {
+  width: 351px;
+}
+
+.container .loginContainer .fieldsButton {
+  text-align: left;
+}
+
+.container .loginContainer .fieldsButton .label {
+  margin-top: 20px;
+  font-family: Open Sans;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.container .loginContainer .fieldsButton .button {
+  cursor: pointer;
+  display: inline-block;
+  width: 160px;
+  height: 44px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  background-color: #fff;
+  font-family: Open Sans;
+  font-size: 16px;
+  color: #002a3a;
+  font-weight: bold;
+}
+
+.container .loginContainer .fieldsButton .button .buttonText {
+  margin-top: 10px;
+}
+
+.container .loginContainer .fieldsButton .field {
+  padding-top: 5px;
+}
+
+.container .loginContainer .fieldsButton .field input {
+  padding: 0 10px;
+  width: 100%;
+  height: 44px;
+  border: 2px solid #d2d0ce;
+  background-color: #ffffff;
+}
+
+.container .loginContainer .fieldsButton .forgotPassword {
+  cursor: pointer;
+  font-family: Open Sans;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: Semibold;
+  margin-top: 5px;
+}
+
+.container .loginContainer .fieldsButton .signInAluContent {
+  margin-top: 30px;
+  font-family: Open Sans;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: Bold;
+}
+
+.container .loginContainer .fieldsButton .signInAluButton {
+  cursor: pointer;
+  margin-top: 20px;
+  font-family: Open Sans;
+  color: #fff;
+  font-size: 16px;
+  display: inline-flex;
+  width: 205px;
+  height: 44px;
+  border: 1px solid #d2d0ce;
+  border-radius: 4px;
+  background-color: #002a3a;
+}
+
+.container .loginContainer .fieldsButton .signInAluButton .buttonIcon {
+  margin: 6px 10px;
+}
+
+.container .loginContainer .fieldsButton .signInAluButton .buttonText {
+  margin: 11px;
+  font-weight: bold;
+}
+
+.centered {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#forgotPasswordContainer {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .container .loginContainer .fieldsButton .field input {
+    padding: 0 0 0 10px;
+    width: 97%;
+  }
+  
+  .container .loginContainer .studentPortalImage {
+    width: 100%;
+  }
+}

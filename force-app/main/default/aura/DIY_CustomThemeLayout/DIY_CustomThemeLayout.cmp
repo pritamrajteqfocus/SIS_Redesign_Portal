@@ -1,0 +1,4 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="Full page for community - Custom Theme Layout">
+	<aura:attribute name="fullBody" type="Aura.Component[]" required="false"/>
+    {!v.fullBody}
+</aura:component>

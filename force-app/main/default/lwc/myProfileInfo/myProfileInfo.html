@@ -1,0 +1,59 @@
+<!--
+  @File Name          : myProfileInfo.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 6/15/2020, 3:39:29 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    6/2/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <div class="slds-grid slds-gutters slds-wrap">
+        
+        <div class="slds-col slds-size_1-of-2 slds-max-small-size_1-of-1">
+            <c-sis-record-detail
+            recordid={contactid}
+            isprofilewithpic ="true"
+            fields={fields}
+            propic={My_Resource}
+            title="Your Profile"
+            contactregistaremail={registeremail}
+            classname="slds-col slds-size_3-of-3 slds-large-size_2-of-3">
+            </c-sis-record-detail>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2 slds-max-small-size_1-of-1">
+            <c-sis-record-detail
+            recordid={contactid}
+            iseditblock="true"
+            fields={contactinfofields}
+            propic={My_Resource}
+            title="General Contact Information"
+            contactregistaremail={registeremail}
+            classname="slds-col slds-size_3-of-3 slds-large-size_3-of-3"
+            countrycode={countrycode}
+            phonenum={phonenum}>
+            </c-sis-record-detail>
+        </div>
+    </div>
+    <br/>
+
+
+
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-2 slds-max-small-size_1-of-1">
+            <c-sis-record-detail 
+            recordid={contactid}
+            iseditblock="true"
+            fields={otherinfofields}
+            propic={My_Resource}
+            title="Other Information"
+            contactregistaremail={registeremail}
+            classname="slds-col slds-size_3-of-3 slds-large-size_3-of-3">
+            </c-sis-record-detail>
+        </div>
+    </div>
+
+</template>
