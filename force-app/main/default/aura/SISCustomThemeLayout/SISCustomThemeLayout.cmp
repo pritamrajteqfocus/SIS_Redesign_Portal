@@ -1,23 +1,47 @@
-<aura:component implements="forceCommunity:themeLayout" access="global" description="Full page for community - Custom Theme Layout">
-	<aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
-
-    
-    <!--Logo-->
+<aura:component implements="forceCommunity:themeLayout" access="global"
+    description="Full page for community - Custom Theme Layout">
+    <aura:attribute name="profileMenu" type="Aura.Component[]" required="false" />
+    <aura:attribute name="currentPage" type="String" default="Home" />
+    <aura:handler name="currentPageName" event="c:SIS_CurrentSubPage" action="{!c.setCurrentSubPagename}" />
 
     <!--Navigation-->
-    <lightning:layout>
+    <lightning:layout class="sidebarTheme">
         <lightning:layoutItem>
-           <c:SISCustomNavigation></c:SISCustomNavigation>
+            <c:SISCustomNavigation></c:SISCustomNavigation>
         </lightning:layoutItem>
         <lightning:layoutItem flexibility="auto">
-            <lightning:layoutItem>
-                <div class="slds-border_bottom user_prof_bg">
-                    {!v.profileMenu}
+            <div class=" mobileView">
+                <div class="slds-grid ">
+                    <div class="slds-col slds-size_1-of-6"></div>
+                    <!--Logo-->
+                    <div class="slds-col slds-size_1-of-6">
+                        <a href="javascript:void(0);" onclick="{!c.notifyNavigateHome}">
+                            <div class="logoContainerForMobile ">
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="slds-col slds-size_2-of-6 slds-m-left_small">
+                        <h2 class="slds-text-heading_small slds-p-top_medium slds-m-top_small studentPortal">Student
+                            Portal
+                            <div class="slds-border_bottom horizontalline"></div>
+                        </h2>
+
+                    </div>
+                </div>
+                <div class="slds-text-align_center slds-p-top_medium slds-text-heading_small">
+                    <h2>{!v.currentPage}</h2>
+                </div>
+            </div>
+            <lightning:layoutItem class="desktopView">
+                <div class="slds-border_bottom ">
+                    <!-- {!v.profileMenu} -->
+                    <c:header />
                 </div>
             </lightning:layoutItem>
-            {!v.body}
+            <lightning:layoutItem>
+                {!v.body}
+            </lightning:layoutItem>
         </lightning:layoutItem>
     </lightning:layout>
-
-    <!--Page-->
 </aura:component>

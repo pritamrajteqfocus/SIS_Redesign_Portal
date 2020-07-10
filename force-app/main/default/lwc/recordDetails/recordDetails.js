@@ -1,4 +1,6 @@
 import { LightningElement, api, track, wire } from 'lwc';
+import contactEmailMetadataMauritius from '@salesforce/apex/SIS_MyProfileController.contactEmailMetadataMauritius';
+import { getSObjectValue } from '@salesforce/apex';
 import { getRecord, getFieldValue } from "lightning/uiRecordApi";
 import CONTACT_ID from "@salesforce/schema/User.ContactId";
 import CONTACT_NAME from "@salesforce/schema/User.Contact.Name";
@@ -12,34 +14,28 @@ export default class RecordDetails extends LightningElement {
     @track contactEmail;
     @track phonenum;
     @track countrycode;
-    
-    @wire(getRecord, { recordId: USER_ID, fields: [CONTACT_ID,CONTACT_NAME,CONTACT_EMAIL,CONTACT_CAMPUS,CONTACT_PHONE,CONTACT_COUNTRY_CODE] })
+    @track contactCampus;
+
+    @wire(getRecord, { recordId: USER_ID, fields: [CONTACT_ID, CONTACT_NAME, CONTACT_EMAIL, CONTACT_CAMPUS, CONTACT_PHONE, CONTACT_COUNTRY_CODE] })
     user;
 
     get contactId() {
+        this.contactCampus = getFieldValue(this.user.data, CONTACT_CAMPUS);
         let tempPhone = getFieldValue(this.user.data, CONTACT_PHONE);
         var tecmpcode = this.countrycode = getFieldValue(this.user.data, CONTACT_COUNTRY_CODE);
-        try{
-         if(tecmpcode != undefined){
-             this.phonenum = tempPhone.slice(JSON.stringify(tecmpcode).length + 1);
-             this.tempPhone = this.phonenum;
-         }
-        }catch(err){
-           // alert(err.message);
+        try {
+            if (tecmpcode != undefined) {
+                this.phonenum = tempPhone.slice(JSON.stringify(tecmpcode).length + 1);
+                this.tempPhone = this.phonenum;
+            }
+        } catch (err) {
+            // alert(err.message);
         }
         return getFieldValue(this.user.data, CONTACT_ID);
     }
-  
-    get contactCampus() {
-      
-        return getFieldValue(this.user.data, CONTACT_CAMPUS);
-    }
     get code() {
-      
         return getFieldValue(this.user.data, CONTACT_COUNTRY_CODE);
     }
-
-
     @track editmodelopen = false;
     @track isSpinnerOpen = true;
     @track tempPhone;
@@ -47,10 +43,11 @@ export default class RecordDetails extends LightningElement {
     @api isprofilewithpic;
     @api recordid;
     @api fields;
-    @api propic; 
-    @api title;   
+    @api propic;
+    @api title;
     @api contactregistaremail;
     @api iseditblock;
+    @api isdeleteblock;
     @api classname;
 
     connectedCallback() {
@@ -60,37 +57,50 @@ export default class RecordDetails extends LightningElement {
     handleSubmit(event) {
         event.preventDefault();       // stop the form from submitting
         const fields = event.detail.fields;
-        if(this.title == 'General Contact Information' && (this.code == undefined || this.code == '' || this.tempPhone == undefined || this.tempPhone == '')){
+        if (this.title == 'General Contact Information' && (this.code == undefined || this.code == '' || this.tempPhone == undefined || this.tempPhone == '')) {
             alert('Phone number is required');
             return false;
-        }else if(this.title == 'General Contact Information'){
+        } else if (this.title == 'General Contact Information') {
             fields.Phone = '+' + this.code + this.tempPhone;
             fields.Country_Code__c = this.code;
         }
         this.isSpinnerOpen = true;
         this.template.querySelector('lightning-record-edit-form').submit(fields);
     }
-    handleEditIcon(){
+    handleEditIcon() {
         this.editmodelopen = true;
         this.iseditblock = false;
     }
-    cancelChanges(){
+    cancelChanges() {
         this.editmodelopen = false;
         this.isSpinnerOpen = true;
         this.iseditblock = true;
     }
-    handleOnLoad(){
-        this.isSpinnerOpen = false;  
+    handleOnLoad() {
+        this.isSpinnerOpen = false;
     }
     handleChangePhone(event) {
-    this.tempPhone = event.target.value;
-    }  
+        this.tempPhone = event.target.value;
+    }
     handleChangeCountryCode(event) {
         this.code = event.target.value;
-        }  
-    handleSuccess(){
+    }
+    handleSuccess() {
         this.editmodelopen = false;
         this.isSpinnerOpen = false;
         this.iseditblock = true;
-    }    
+    }
+    // call apex metod to get the email id from custom metadata according to logged-in user
+    @wire(contactEmailMetadataMauritius, { campus: '$contactCampus' })
+    wiredRecordsMethod({ error, data }) {
+        if (data) {
+            this.contactregistaremail = data;
+            // this.error = undefined;
+        } else if (error) {
+            alert(error)
+            // this.error = error;
+            //  this.data  = undefined;
+        }
+        this.tableLoadingState = false;
+    }
 }

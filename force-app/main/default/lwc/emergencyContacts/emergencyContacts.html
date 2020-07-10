@@ -1,0 +1,36 @@
+<template>
+    <p>
+        Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is
+        a group of at least five sentences, a paragraph is half a page long, etc.
+    </p>
+    <br />
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_8-of-12">
+            <template for:each={features} for:item="acc">
+                <div class="slds-p-bottom_small" key={acc.label}>
+                    <c-record-Details
+                    recordid="0031w00000ebttIAAQ"
+                    iseditblock="true"
+                    fields={fields}
+                    title="General Contact Information"
+                    isdeleteblock="true"
+                    classname="slds-col slds-size_3-of-3 slds-large-size_3-of-3"
+                     >
+                    </c-record-Details>
+        
+                </div>
+              
+            </template>
+        </div>
+        <div class="slds-col slds-size_4-of-12">
+            
+        </div>
+        <div class="slds-col slds-size_8-of-12">
+            
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-text-align_right">
+            <lightning-button variant="brand" label="Add Contact" title="Add Contact" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </div>
+   
+</template>

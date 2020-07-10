@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="set value false to ">
+    <aura:attribute name="currentPageName" type="String" default="" />
+</aura:event>

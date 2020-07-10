@@ -1,129 +1,60 @@
 ({
-    doInit : function(component, event, helper) {
+    doInit: function (component, event, helper) {
         //helper.updateDrawerOpening(component, event, helper);
     },
-    
-    handleMenuItemsChange : function(component, event, helper) {
+
+    handleMenuItemsChange: function (component, event, helper) {
         console.log("handleMenuItemsChange");
         let currentpage;
         let currentsubpage;
-        
+
         let navList = component.get("v.menuItems");
-        if(navList[0].id == 0) {
+        if (navList[0].id == 0) {
             navList.shift();
-            //component.set("v.menuItems1", navList);
-            //console.log("@ " + JSON.stringify(navList));
         }
-        for(let element of navList) {
-            if(element.label == "Home") {
+        for (let element of navList) {
+            let position = "top";
+            if (element.label == "Home") {
                 element.icon = "utility:home";
-            } else if(element.label == "About Me") {
+            } else if (element.label == "About Me") {
                 element.icon = "utility:user";
-            } else if(element.label == "Academics") {
+            } else if (element.label == "Academics") {
                 element.icon = "utility:education";
-            } else if(element.label == "Careers") {
+            } else if (element.label == "Careers") {
                 element.icon = "utility:case";
-            } else if(element.label == "ALU Pay") {
+            } else if (element.label == "ALU Pay") {
                 element.icon = "utility:currency";
-            } else if(element.label == "Support") {
+            } else if (element.label == "Support") {
                 element.icon = "utility:info";
-            } else if(element.label == "Login") {
+                position = "control";
+            } else if (element.label == "Login") {
                 element.icon = "utility:power";
-            } else if(element.label == "Logout") {
+                position = "control";
+            } else if (element.label == "Logout") {
                 element.icon = "utility:logout";
+                position = "control";
             }
-            /*
-            if(element.subMenu) {
-                for(let subElement of element.subMenu) {
-                    if(subElement.active == true) {
-                        currentpage = element.label;
-                        currentsubpage = subElement.label;                      
-                    }
-                }
-            }*/
-            
-            //console.log("@ " + JSON.stringify(element));
+            element.position = position;
         }
-       // console.log("@ " + JSON.stringify(navList));
         component.set("v.menuItems1", navList);
-        /*
-        if(currentpage) {
-            component.set("v.currentpage", currentpage);
-        } if(currentsubpage) {
-            component.set("v.currentsubpage", currentsubpage);
-        }
-        */
-        
-        //console.log("@@@ ");
-        
-        
     },
-    
-   /* topMenu : function(component, event, helper) {
-        console.log("topMenu");
-        let isLoggedIn = component.get("v.isLoggedIn");
-        let currentpage = component.get("v.currentpage");
-        console.log("@@ topMenu " + JSON.stringify(helper.getTopMenu(isLoggedIn, currentpage)));
-        return helper.getTopMenu(isLoggedIn, currentpage);
+    toggleDrawerState: function (component, event, helper) {
+        console.log("toggleDrawerState");
+        component.set("v.userSelectedDrawerOpen", !component.get("v.openDrawer"));
+        helper.updateDrawerOpening(component, event, helper);
     },
 
-    subMenu : function(component, event, helper) {
-        console.log("subMenu");
-        let isLoggedIn = component.get("v.isLoggedIn");
-        let currentpage = component.get("v.currentpage");
-        if (!isLoggedIn) {
-            return null;
-        }
-        return helper.getSubMenuFor(currentpage);
-    },
-
-    controlMenu : function(component, event, helper) {
-        console.log("controlMenu");
-        let isLoggedIn = component.get("v.isLoggedIn");
-        console.log("@@ controlMenu " + JSON.stringify(helper.getControlMenu(isLoggedIn)));
-        return helper.getControlMenu(isLoggedIn);
-    },
-
-    
-
-    
-
-    handleNavigateHome : function(component, event, helper) {
-        console.log("handleNavigateHome");
-        if (this.isLoggedIn) {
-            this.currentpage = 'home';
-        }
-        else {
-            this.currentpage = 'login'
-        }
-        this.currentsubpage = '';
-    },
-
-    onClick : function(component, event, helper) {
-        console.log("onClick");
-        var id = event.target.dataset.menuItemId;
-        if (id) {
-            component.getSuper().navigate(id);
-         }
-   },*/
-
-   toggleDrawerState : function(component, event, helper) {
-       console.log("toggleDrawerState");
-       component.set("v.userSelectedDrawerOpen", !component.get("v.openDrawer"));
-       helper.updateDrawerOpening(component, event, helper);
-   },
-
-    notifyNavigateHome : function(component, event, helper) {
+    notifyNavigateHome: function (component, event, helper) {
         console.log("notifyNavigateHome");
     },
 
-    notifyMenuSelect : function(component, event, helper) {
+    notifyMenuSelect: function (component, event, helper) {
         helper.handleMenuSelect(component, event, helper);
         helper.updateDrawerOpening(component, event, helper);
-        
+
     },
 
-    notifyMenuClickSelect : function(component, event, helper) {
+    notifyMenuClickSelect: function (component, event, helper) {
         console.log("notifyMenuClickSelect");
         let selectedName = event.currentTarget.getAttribute("data-name");
         component.set("v.currentpage", selectedName);
@@ -131,38 +62,61 @@
         //helper.handleMenuSelect(component, event, helper);
         helper.updateDrawerOpening(component, event, helper);
     },
-    
-    notifySubMenuSelect : function(component, event, helper) {
+
+    notifySubMenuSelect: function (component, event, helper) {
         console.log("notifySubMenuSelect");
         const selectedSubId = event.getParam('name');
-        console.log("selectedSubId " +selectedSubId);
+        console.log(JSON.stringify(event));
+
+        try {
+            var element = component.find("menuToggle").getElement();
+            $A.util.addClass(element, 'togglemenu');
+
+            var element = component.find("spanbox1").getElement();
+            $A.util.removeClass(element, 'span1');
+            var element = component.find("spanbox2").getElement();
+            $A.util.removeClass(element, 'span2');
+            var element = component.find("spanbox3").getElement();
+            $A.util.removeClass(element, 'span3');
+        } catch (error) {
+            alert(error.message)
+        }
         //component.set("v.menuItems1", []);
         if (selectedSubId) {
             component.getSuper().navigate(selectedSubId);
+            //Get the event using registerEvent name. 
+            var cmpEvent = component.getEvent("currentPageName");
+            //Set event attribute value
+            cmpEvent.setParams({ "currentPageName": helper.getCurrentSubPage(component, event, helper) });
+            cmpEvent.fire();
         }
         console.log("I'm alive");
-         //$A.get('e.force:refreshView').fire();
-        //helper.handleSubMenuSelect(component, event, helper);
-        //helper.updateDrawerOpening(component, event, helper);
     },
-    toggleMenu : function(component, event, helper) {
-       try {
-        var element = component.find("togglemenu").getElement();
-        $A.util.toggleClass(element, 'slds-is-open');
-       } catch (error) {
-           console.log(error.message)
-       }
+    toggleMenu: function (component, event, helper) {
+        try {
+            var element = component.find("menuToggle").getElement();
+            $A.util.toggleClass(element, 'togglemenu');
+
+            var element = component.find("spanbox1").getElement();
+            $A.util.toggleClass(element, 'span1');
+            var element = component.find("spanbox2").getElement();
+            $A.util.toggleClass(element, 'span2');
+            var element = component.find("spanbox3").getElement();
+            $A.util.toggleClass(element, 'span3');
+        } catch (error) {
+            console.log(error.message)
+        }
 
     },
-    toggleSubmenu : function(component, event, helper) {
-       try {
-        var subMenuId = event.currentTarget.value;
-        alert(subMenuId)
-        var element = component.find("1togglemenu").getElement();
-        $A.util.toggleClass(element, 'slds-hide');
-       } catch (error) {
-           alert(error.message)
-       }
+    toggleSubmenu: function (component, event, helper) {
+        try {
+            var subMenuId = event.currentTarget.value;
+            alert(subMenuId)
+            var element = component.find("1togglemenu").getElement();
+            $A.util.toggleClass(element, 'slds-hide');
+        } catch (error) {
+            alert(error.message)
+        }
 
     }
 })

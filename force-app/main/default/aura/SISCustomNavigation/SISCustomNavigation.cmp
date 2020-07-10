@@ -14,36 +14,21 @@
 
     <aura:attribute name="userSelectedDrawerOpen" type="Boolean" default="true" />
 
-
+    <aura:registerEvent name="currentPageName" type="c:SIS_CurrentSubPage" />
     <aura:handler name="change" value="{!v.menuItems}" action="{!c.handleMenuItemsChange}" />
     <aura:attribute name="menuItems1" type="List" />
 
     <!--HANDLERS-->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
-    <!--
-    <ul onclick="{!c.onClick}">
-        <aura:iteration items="{!v.menuItems1}" var="item" >
-            <aura:if isTrue="{!item.subMenu}">
-                <li>{!item.label}</li>
-                <ul>
-                    <aura:iteration items="{!item.subMenu}" var="subItem">
-                        <li><a data-menu-item-id="{!subItem.id}" href="">{!subItem.label}</a></li>
-                    </aura:iteration>
-                </ul>
-            <aura:set attribute="else">
-                <li><a data-menu-item-id="{!item.id}" href="">{!item.label}</a></li>
-            </aura:set>
-            </aura:if>
-        </aura:iteration>
-    </ul>
--->
     <!-- <div class="desktopNavigation"> -->
-    <lightning:layout class="sidebar " >
-
+    <lightning:layout class="sidebar">
         <!-- Top most drawer, always rendered-->
+        
         <lightning:layoutItem
-            class="desktopNavigation topdrawer slds-panel slds-panel_docked slds-panel_docked-left slds-is-open">
+            class="desktopNavigation topdrawer slds-panel slds-panel_docked slds-panel_docked-left  slds-is-open">
+                            
+
             <aura:if isTrue="{!!v.openDrawer}">
                 <div class="drawer_expando_button slds-is-absolute slds-m-around_small toogleIconPosition">
                     <aura:if isTrue="{!v.submenu}">
@@ -55,15 +40,13 @@
                 </div>
             </aura:if>
             <!-- Top drawer items -->
-            <div class="slds-grid slds-wrap slds-grid_vertical slds-size_1-of-1"
-                style="height:100%; background-color: #061C3F;">
+            <div class="slds-grid slds-wrap slds-grid_vertical slds-size_1-of-1 slds-p-bottom_large"
+                style="height:100%; background-color: #002D6D;">
                 <!-- Logo directing home -->
                 <div class="slds-col slds-size_1-of-1 ">
                     <a href="javascript:void(0);" onclick="{!c.notifyNavigateHome}">
                         <div class="logoContainer slds-m-vertical_x-large"></div>
-                        <!--<img style="width:120px;" alt="ALU Logo" title="{!v.title}"
-                            src="https://imgur.com/download/KtktCa0"
-                            class="slds-m-vertical_x-large"/> -->
+
                     </a>
                 </div>
                 <!-- Container for top menu -->
@@ -73,9 +56,11 @@
                         <lightning:verticalNavigation onselect="{!c.notifyMenuSelect}" selectedItem="{!v.currentpage}"
                             class="slds-theme--inverse">
                             <aura:iteration items="{!v.menuItems1}" var="item">
-                                <lightning:verticalNavigationItemIcon class="slds-current-color link_item"
-                                    label="{!item.label}" name="{!item.label}" iconName="{!item.icon}">
-                                </lightning:verticalNavigationItemIcon>
+                                <aura:if isTrue="{!item.position ne 'control'}">
+                                    <lightning:verticalNavigationItemIcon class="slds-current-color link_item"
+                                        label="{!item.label}" name="{!item.label}" iconName="{!item.icon}">
+                                    </lightning:verticalNavigationItemIcon>
+                                </aura:if>
                             </aura:iteration>
                         </lightning:verticalNavigation>
                         <aura:set attribute="else">
@@ -87,23 +72,27 @@
                                         <lightning:verticalNavigation onselect="{!c.notifyMenuSelect}"
                                             selectedItem="{!v.currentpage}">
                                             <aura:iteration items="{!v.menuItems1}" var="item">
-                                                <lightning:verticalNavigationItemIcon
-                                                    class="slds-current-color slds-theme--inverse link_item"
-                                                    label="{!item.label}" name="{!item.label}" iconName="{!item.icon}">
-                                                </lightning:verticalNavigationItemIcon>
-                                                <!-- Submenu -->
-                                                <lightning:verticalNavigation onselect="{!c.notifySubMenuSelect}"
-                                                    selectedItem="{!v.currentsubpage}" compact="true">
-                                                    <aura:if isTrue="{!item.label eq v.currentpage }">
-                                                        <!--Add logic for collapse menu-->
-                                                        <aura:iteration items="{!item.subMenu}" var="subItem">
-                                                            <lightning:verticalNavigationItem
-                                                                class="link_item slds-p-left_x-large link_item slds-theme--inverse"
-                                                                label="{!subItem.label}" name="{!subItem.id}">
-                                                            </lightning:verticalNavigationItem>
-                                                        </aura:iteration>
-                                                    </aura:if>
-                                                </lightning:verticalNavigation>
+                                                <aura:if isTrue="{!item.position ne 'control'}">
+                                                    <lightning:verticalNavigationItemIcon
+                                                        class="slds-current-color slds-theme--inverse link_item"
+                                                        label="{!item.label}" name="{!item.label}"
+                                                        iconName="{!item.icon}">
+                                                    </lightning:verticalNavigationItemIcon>
+                                                    <!-- Submenu -->
+                                                    <lightning:verticalNavigation onselect="{!c.notifySubMenuSelect}"
+                                                        selectedItem="{!v.currentsubpage}" compact="true">
+                                                        <aura:if isTrue="{!item.label eq v.currentpage }">
+                                                            <!--Add logic for collapse menu-->
+                                                            <aura:iteration items="{!item.subMenu}" var="subItem">
+                                                                <lightning:verticalNavigationItem
+                                                                    class="link_item slds-p-left_x-large link_item slds-theme--inverse"
+                                                                    label="{!subItem.label}" title="{!subItem.label}"
+                                                                    name="{!subItem.id}">
+                                                                </lightning:verticalNavigationItem>
+                                                            </aura:iteration>
+                                                        </aura:if>
+                                                    </lightning:verticalNavigation>
+                                                </aura:if>
                                             </aura:iteration>
                                         </lightning:verticalNavigation>
                                     </aura:if>
@@ -116,23 +105,25 @@
                                                 class="slds-p-around_x-small icon_bg">
                                                 <!--Add attribute to pass data-name, dynamic icon and buttonIcon varient-->
                                                 <aura:iteration items="{!v.menuItems1}" var="ir">
-                                                    <span data-name="{!ir.label}" onclick="{!c.notifyMenuClickSelect}">
-                                                        <lightning:buttonIcon iconName="{!ir.icon}"
-                                                            variant="bare-inverse" class="slds-m-around_xx-small"
-                                                            size="medium" alternativeText="{!ir.label}"
-                                                            title="{!ir.label}" name="{!ir.label}" />
-                                                    </span>
-                                                    <!--Add logic to show border-filled varient of button-->
-                                                    <!--<lightning:buttonIcon 
-                                                    	iconName="utility:settings" 
-                                                        variant="border-filled"
-                                                        class="slds-m-around_xx-small"
-                                                        size="medium"
-                                                        alternativeText="{!ir.label}"
-                                                        title="{!ir.label}"
-                                                        
-                                                        onclick="{!c.notifyMenuClickSelect}"
-                                                     />-->
+                                                    <aura:if isTrue="{!ir.position ne 'control'}">
+                                                        <span data-name="{!ir.label}"
+                                                            onclick="{!c.notifyMenuClickSelect}">
+                                                            <aura:if isTrue="{!ir.label eq v.currentpage}">
+                                                                <lightning:buttonIcon iconName="{!ir.icon}"
+                                                                    variant="border-filled"
+                                                                    class="slds-m-around_xx-small" size="medium"
+                                                                    alternativeText="{!ir.label}" title="{!ir.label}"
+                                                                    name="{!ir.label}" />
+                                                                <aura:set attribute="else">
+                                                                    <lightning:buttonIcon iconName="{!ir.icon}"
+                                                                        variant="bare-inverse"
+                                                                        class="slds-m-around_xx-small" size="medium"
+                                                                        alternativeText="{!ir.label}"
+                                                                        title="{!ir.label}" name="{!ir.label}" />
+                                                                </aura:set>
+                                                            </aura:if>
+                                                        </span>
+                                                    </aura:if>
                                                 </aura:iteration>
                                             </lightning:layout>
                                             <!-- Submenu drawer -->
@@ -155,7 +146,7 @@
                                                                     <aura:if isTrue="{!irsub.subMenu}">
                                                                         <aura:iteration items="{!irsub.subMenu}"
                                                                             var="subItem">
-                                                                            <lightning:verticalNavigationItem
+                                                                            <lightning:verticalNavigationItem  
                                                                                 label="{!subItem.label}"
                                                                                 name="{!subItem.id}">
                                                                             </lightning:verticalNavigationItem>
@@ -173,6 +164,7 @@
                             </div>
                         </aura:set>
                     </aura:if>
+                    
                 </div>
                 <!-- Toggle for menu variants -->
                 <div class="slds-col slds-is-relative slds-size_1-of-1 slds-col_bump-top">
@@ -185,20 +177,53 @@
                                     onchange="{!c.toggleDrawerVariant}" />
                             </aura:if>
                         </div>
-                    </aura:if>
-                </div>
-                
-                <!-- Container for permanent control menu -->
-                <div class="slds-col slds-size_1-of-1 slds-m-bottom_large slds-theme--inverse">
+                        <div class="slds-col slds-size_1-of-1  slds-theme--inverse slds-m-bottom_xx-large con">
                     <!--Add logic to show control menu items at bottom-->
-                 
+                    <lightning:verticalNavigation onselect="{!c.onselect}" selectedItem="{!v.currentpage}" >
+                        <lightning:verticalNavigationSection label=" "  class="slds-m-top_small" >
+                            <aura:iteration items="{!v.menuItems1}" var="itcon">
+                                <aura:if isTrue="{!itcon.position eq 'control'}">
+                                    <div class="slds-current-color ">
+                                    <lightning:verticalNavigationItemIcon 
+                                        label="{!itcon.label}" name="{!itcon.label}" iconName="{!itcon.icon}">
+                                    </lightning:verticalNavigationItemIcon>
+                                    </div>
+                                </aura:if>
+                            </aura:iteration>
+                        </lightning:verticalNavigationSection>
+                    </lightning:verticalNavigation>
                 </div>
+                    </aura:if>
+                             
+                </div>
+
+                <!-- Container for permanent control menu -->
+                 <aura:if isTrue="{!v.openDrawer}">
+                <div class="slds-col slds-size_1-of-1 slds-theme--inverse">
+                    <!--Add logic to show control menu items at bottom-->
+                    <lightning:verticalNavigation onselect="{!c.onselect}" selectedItem="{!v.currentpage}" >
+                        <lightning:verticalNavigationSection label=" "  class="slds-p-top_xx-large slds-m-bottom_xx-large ">
+                            <aura:iteration items="{!v.menuItems1}" var="itcon">
+                                <aura:if isTrue="{!itcon.position eq 'control'}">
+                                    <div class="slds-current-color ">
+                                    <lightning:verticalNavigationItemIcon 
+                                        label="{!itcon.label}" name="{!itcon.label}" iconName="{!itcon.icon}">
+                                    </lightning:verticalNavigationItemIcon>
+                                    </div>
+                                </aura:if>
+                            </aura:iteration>
+                        </lightning:verticalNavigationSection>
+                    </lightning:verticalNavigation>
+                </div>
+                </aura:if>
             </div>
+            
         </lightning:layoutItem>
         <!-- Sub drawer for submenu, sometimes hidden -->
         <aura:if isTrue="{!v.openDrawer}">
             <lightning:layoutItem
-                class="desktopNavigation subdrawer slds-panel slds-panel_docked slds-panel_docked-left slds-is-open">
+                class="desktopNavigation subdrawer slds-panel  slds-panel_docked slds-panel_docked-left slds-is-open" >
+                <div class="slds-panel__body">
                 <!-- Absolute button to close subdrawer -->
                 <div class="drawer_expando_button slds-is-absolute slds-m-around_small toogleIconPosition">
                     <lightning:buttonIcon class="slds-current-color" iconName="utility:chevronleft"
@@ -228,54 +253,54 @@
                         </lightning:verticalNavigation>
                     </aura:if>
                 </div>
+                    </div>
+                
             </lightning:layoutItem>
         </aura:if>
         <!-- Display in Mobile view -->
         <div class="mobileNavigation">
-            <!-- <div class="slds-grid slds-wrap slds-grid_vertical slds-size_1-of-1" style="height:100%; background-color: #061C3F;">
-            <div class="slds-col slds-size_1-of-1 slds-p-left_xx-large">
-                <a href="javascript:void(0);" onclick="{!c.notifyNavigateHome}">
-                    <div class="logoContainer slds-m-vertical_x-large"></div>
-                  
-                </a>
-            </div>
-            </div> -->
-            <div class="slds-dropdown-trigger slds-dropdown-trigger_click mobileMenuBar" aura:id="togglemenu">
-                <lightning:buttonIcon iconName="utility:rows" alternativeText="Menu" title="menu"
-                    onclick="{!c.toggleMenu}" />
-                <div class="slds-dropdown slds-dropdown_right mobileMenuItem">
-                    <div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
-                        <!-- <ul onclick="{!c.onClick}"> -->
-                            <lightning:verticalNavigation onselect="{!c.notifyMenuSelect}"
-                            selectedItem="{!v.currentpage}">
-                            <aura:iteration items="{!v.menuItems1}" var="item" >
-                                <aura:if isTrue="{!item.subMenu}">
-                                    <!-- <li>{!item.label}</li> -->
-                                    <lightning:verticalNavigationItemIcon
-                                    label="{!item.label}"
-                                    name="{!item.label}"
-                                    iconName="{!item.icon}" />
-                                        <lightning:verticalNavigation onselect="{!c.notifySubMenuSelect}"
-                                        selectedItem="{!v.currentsubpage}" compact="true" class="slds-hide">
-                                        <aura:iteration items="{!item.subMenu}" var="subItem">
-                                             <lightning:verticalNavigationItem label="{!subItem.label}" name="{!subItem.label}" ></lightning:verticalNavigationItem>
-                                        </aura:iteration>
+            <lightning:layout>
+                <lightning:layoutItem size="12">
+                    <div class="slds-dropdown-trigger slds-dropdown-trigger_click mobileMenuBar" aura:id="togglemenu">
+                        <div class="container">
+                            <nav role="navigation">
+                                <div id="menuToggle">
+                                    <input type="checkbox" onclick="{!c.toggleMenu}" />
+                                    <span aura:id="spanbox1" class=""></span>
+                                    <span aura:id="spanbox2" class=""></span>
+                                    <span aura:id="spanbox3" class=""></span>
+                                    <div class="container1">
+                                    <ul id="menu" aura:id="menuToggle" class="togglemenu">
+                                        <lightning:verticalNavigation onselect="{!c.notifyMenuSelect}"
+                                            selectedItem="{!v.currentpage}">
+                                            <aura:iteration items="{!v.menuItems1}" var="item">
+                                                <lightning:verticalNavigationItemIcon
+                                                    class="slds-current-color slds-theme--inverse link_item "
+                                                    label="{!item.label}" name="{!item.label}" iconName="{!item.icon}">
+                                                </lightning:verticalNavigationItemIcon>
+                                                <!-- Submenu -->
+                                                <lightning:verticalNavigation onselect="{!c.notifySubMenuSelect}"
+                                                    selectedItem="{!v.currentsubpage}" compact="true">
+                                                    <aura:if isTrue="{!item.label eq v.currentpage }">
+                                                        <!--Add logic for collapse menu-->
+                                                        <aura:iteration items="{!item.subMenu}" var="subItem">
+                                                            <lightning:verticalNavigationItem
+                                                                class="link_item slds-p-left_x-large link_item slds-theme--inverse"
+                                                                label="{!subItem.label}" name="{!subItem.id}">
+                                                            </lightning:verticalNavigationItem>
+                                                        </aura:iteration>
+                                                    </aura:if>
+                                                </lightning:verticalNavigation>
+                                            </aura:iteration>
                                         </lightning:verticalNavigation>
-                                <aura:set attribute="else">
-                                    <lightning:verticalNavigationItemIcon
-                                    label="{!item.label}"
-                                    name="{!item.label}"
-                                    iconName="{!item.icon}" />
-                                </aura:set>
-                                </aura:if>
-                            </aura:iteration>
-                            </lightning:verticalNavigation>
-                        <!-- </ul> -->
+                                    </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </lightning:layoutItem>
+            </lightning:layout>
         </div>
     </lightning:layout>
-    <!-- </div> -->
-
 </aura:component>

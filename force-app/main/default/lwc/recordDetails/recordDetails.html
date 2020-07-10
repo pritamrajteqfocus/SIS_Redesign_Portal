@@ -22,9 +22,16 @@
                             </lightning-icon>
                         </span>
                     </template>
+                    <template if:true={isdeleteblock}>
+                        <span style="float:right" class="slds-text-link_reset">
+                            <lightning-icon icon-name="utility:delete" class="slds-p-right_medium" alternative-text="Edit"
+                                size="x-small" title="Edit" onclick={handleEditIcon}>
+                            </lightning-icon>
+                        </span>
+                    </template>
+                    
                 </header>
                 <div class="slds-box">
-
                     <div class="div-body slds-grid slds-wrap">
                         <template if:true={isprofilewithpic}>
                             <div class="slds-col slds-size_3-of-3 slds-large-size_1-of-3 ">
@@ -33,7 +40,6 @@
                                     src="https://cdn1.iconfinder.com/data/icons/avatar-97/32/avatar-02-512.png" />
                             </div>
                         </template>
-
                         <div class={classname}>
                             <template if:false={editmodelopen}>
                                 <lightning-record-view-form record-id={contactId} object-api-name="Contact">
@@ -102,7 +108,6 @@
                                 class="InfoHeading">{contactregistaremail}</span> to make any changes to the above
                             information.</p>
                     </template>
-
                 </div>
             </div>
         </div>

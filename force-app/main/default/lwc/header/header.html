@@ -12,16 +12,12 @@
 <template>
     <div class="header slds-grid slds-grid_align-end">
         <div class="slds-p-around_small slds-align-right">
-            <lightning-tile if:true={user} label={username} href="#" type="media">
+            <lightning-tile label={username} href="#" type="media">
                 <ul class="slds-list_horizontal">
                     <li class="slds-item">{useremail}</li>
                 </ul>
-                <lightning-avatar
-                    slot="media"
-                    src={user.picture}
-                    fallback-icon-name="standard:none"
-                    alternative-text={username}
-                    class="slds-avatar--circle">
+                <lightning-avatar slot="media" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"
+                    fallback-icon-name="standard:none" alternative-text={username} class="slds-avatar--circle">
                 </lightning-avatar>
             </lightning-tile>
         </div>

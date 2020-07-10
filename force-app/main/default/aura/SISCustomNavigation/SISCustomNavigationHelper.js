@@ -67,45 +67,45 @@
         }
     ],
 
-    getTopMenu: function(hasAccess, currentPage) {
+    getTopMenu: function (hasAccess, currentPage) {
         const _menu = [...this.menu].filter((item) => {
             return item.position == 'top'
                 && ((item.show == 'always')
-                    ||((item.show == 'private') && hasAccess)
-                    ||((item.show == 'public') && !hasAccess))
+                    || ((item.show == 'private') && hasAccess)
+                    || ((item.show == 'public') && !hasAccess))
         });
         return _menu.map((item) => {
             item.visible = (!item.external) && (currentPage == item.location);
-            return Object.assign({},item);
+            return Object.assign({}, item);
         });
     },
-    
-    getControlMenu: function(hasAccess) {
+
+    getControlMenu: function (hasAccess) {
         return [...this.menu].filter((item) => {
             return item.position == 'control'
                 && ((item.show == 'always')
-                    ||((item.show == 'private') && hasAccess)
-                    ||((item.show == 'public') && !hasAccess))
+                    || ((item.show == 'private') && hasAccess)
+                    || ((item.show == 'public') && !hasAccess))
         });
     },
-    
-    getSubMenuFor: function(path, component) {
+
+    getSubMenuFor: function (path, component) {
         let submenus;
         let navList = component.get("v.menuItems1");
-        for(let element of navList) {
-            if(element.label == path) {
+        for (let element of navList) {
+            if (element.label == path) {
                 submenus = element.subMenu;
                 break;
             }
         }
         return submenus;
     },
-            
-    updateDrawerOpening:  function(component, event, helper) {
-        component.set("v.openDrawer", component.get("v.userSelectedDrawerOpen")); 
+
+    updateDrawerOpening: function (component, event, helper) {
+        component.set("v.openDrawer", component.get("v.userSelectedDrawerOpen"));
     },
-            
-    handleMenuSelect : function(component, event, helper) {
+
+    handleMenuSelect: function (component, event, helper) {
         console.log("handleMenuSelect");
         let currentpage = component.get("v.currentpage");
         const selectedName = event.getParam('name');//event.detail.selecteditem;
@@ -122,8 +122,8 @@
             this.handleCurrentSubPage(component, event, helper);
         }
     },
-            
-    handleLogout : function(component, event, helper) {
+
+    handleLogout: function (component, event, helper) {
         console.log("handleLogout");
         /*
         this.isLoggedIn = false;
@@ -131,8 +131,8 @@
         
         this.currentpage = 'loggedout';*/
     },
-    
-    handleLogin : function(component, event, helper) {
+
+    handleLogin: function (component, event, helper) {
         console.log("handleLogin");
         /*
         this.isLoggedIn = true;
@@ -146,8 +146,8 @@
         this.handleCurrentSubPage();
         */
     },
-    
-    handleCurrentSubPage : function(component, event, helper) {
+
+    handleCurrentSubPage: function (component, event, helper) {
         console.log("handleCurrentSubPage");
         let currentpage = component.get("v.currentpage");
         let currentsubpage = '';
@@ -157,18 +157,36 @@
         }
         component.set("v.currentsubpage", currentsubpage);
     },
-            
-    handleSubMenuSelect : function(component, event, helper) {
+
+    handleSubMenuSelect: function (component, event, helper) {
         console.log("handleSubMenuSelect");
         //let currentsubpage = component.get("v.currentsubpage");
         const selectedSubId = event.getParam('name');
-        console.log("selectedSubId " +selectedSubId);
+        console.log("selectedSubId " + selectedSubId);
         component.set("v.menuItems1", []);
-        
+
         if (selectedSubId) {
             //component.getSuper().navigate(selectedSubId);
         }
         //const selectedName = event.detail.selecteditem;
         //this.currentsubpage = selectedName;
     },
+    getCurrentSubPage: function (component, event, helper) {
+        let currentsubpage;
+        let navList = component.get("v.menuItems");
+        for (let element of navList) {
+
+
+            if (element.subMenu) {
+                for (let subElement of element.subMenu) {
+                    if (subElement.active == true) {
+                        currentsubpage = subElement.label;
+                    }
+                }
+            }
+
+            //console.log("@ " + JSON.stringify(element));
+        }
+        return currentsubpage;
+    }
 })
